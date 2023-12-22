@@ -13,9 +13,9 @@ class UserController extends BaseController
         return UserResource::collection(User::all());
     }
 
-    public function show($id): UserResource
+    public function show(User $user): UserResource
     {
-        return new UserResource(User::findOrFail($id));
+        return new UserResource($user);
     }
 
     public function store(UserRequest $request): UserResource
