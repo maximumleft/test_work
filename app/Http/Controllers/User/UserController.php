@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Requests\User\UserRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
+use Illuminate\Http\Response;
 
 class UserController extends BaseController
 {
@@ -31,8 +32,9 @@ class UserController extends BaseController
         return new UserResource($user);
     }
 
-    public function destroy(User $user): void
+    public function destroy(User $user): Response
     {
         $user->delete();
+        return response(null,Response::HTTP_NO_CONTENT);
     }
 }
