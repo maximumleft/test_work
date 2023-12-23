@@ -24,7 +24,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'role',
+        'is_blocked',
     ];
 
     /**
@@ -36,6 +36,9 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    public function getNewStatusStatus() {
+        return $this->is_blocked ? '!!!БАН!!!' : 'Не бан';
+    }
 
     /**
      * The attributes that should be cast.

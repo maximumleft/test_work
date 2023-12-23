@@ -26,8 +26,9 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function update(UserRequest $request, User $user): UserResource
+    public function update(UserRequest $request): UserResource
     {
+        $user = User::query()->where('id',$request->route('id'))->first();
         $user->update($request->validated());
         return new UserResource($user);
     }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('username')->unique();
+            $table->string('username')->unique()->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->unsignedSmallInteger('role')->nullable();
+            $table->boolean('is_blocked')->default(false);
             $table->rememberToken()->nullable();
             $table->timestamps();
         });

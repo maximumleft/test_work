@@ -25,8 +25,8 @@ class UserRequest extends FormRequest
             'name' => 'string|nullable',
             'username' => 'string|required|max:255|regex:/^[a-zA-Z0-9]+$/i',
             'email' => 'string|required|email',
-            'password' => 'string|nullable',
-            'role' => 'numeric|nullable',
+            'password' => 'string|required',
+            'is_blocked' => 'boolean|nullable',
         ];
     }
 }
