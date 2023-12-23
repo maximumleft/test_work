@@ -23,9 +23,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'string|nullable',
-            'username' => 'string|required|max:255|unique:users|regex:/^[a-zA-Z0-9]+$/i',
-            'email' => 'string|required|email|unique:users',
-            'password' => 'string|required',
+            'username' => 'string|required|max:255|regex:/^[a-zA-Z0-9]+$/i',
+            'email' => 'string|required|email',
+            'password' => 'string|nullable',
+            'role' => 'numeric|nullable',
         ];
     }
 }

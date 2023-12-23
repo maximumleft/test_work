@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use Illuminate\Http\Response;
 
-class UserController extends BaseController
+class UserController extends Controller
 {
     public function index()
     {
@@ -27,8 +28,7 @@ class UserController extends BaseController
 
     public function update(UserRequest $request, User $user): UserResource
     {
-        $data = $request->validated();
-        $user = $this->servise->update($user, $data);
+        $user->update($request->validated());
         return new UserResource($user);
     }
 
