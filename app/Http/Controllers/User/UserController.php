@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
@@ -15,8 +16,9 @@ class UserController extends Controller
         return UserResource::collection(User::all());
     }
 
-    public function show(User $user): UserResource
+    public function show(Request $request, User $user): UserResource
     {
+        $user = User::query()->where('id', $request->route('id'))->first();
         return new UserResource($user);
     }
 
@@ -33,8 +35,9 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function destroy(User $user): Response
+    public function destroy(Request $request,User $user): Response
     {
+        $user = User::query()->where('id', $request->route('id'))->first();
         $user->delete();
         return response(null,Response::HTTP_NO_CONTENT);
     }
