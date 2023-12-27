@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/users', [UserController::class, 'index'])->middleware('is_blocked');
-Route::get('/users/{id}', [UserController::class, 'show'])->middleware('is_blocked');
+Route::get('/users/{user}', [UserController::class, 'show'])->middleware('is_blocked');
 Route::post('/users', [UserController::class, 'store'])->middleware('is_blocked');
-Route::put('/users/{id}', [UserController::class, 'update'])->middleware('is_blocked');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('is_blocked');
+Route::put('/users/{user}', [UserController::class, 'update'])->middleware('is_blocked');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('is_blocked');
